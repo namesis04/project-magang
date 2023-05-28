@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esca Coffe</title>
+    
+    <!-- Menggunakan Font Google -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Gunakan style.css -->
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+    <!-- section awal header  -->
+<header class="header">
+
+    <a href="#" class="logo">
+        <img src="images/logo.png" alt="">
+    </a>
+
+    <nav class="navbar">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#menu">Menu</a>
+        <a href="#contact">Contact</a>
+    </nav> 
+
+    <div class="icons">
+        <div class="fas fa-search" id="search-btn"></div>
+        <div class="fas fa-shopping-cart" id="cart-btn"></div>
+        <div class="fas fa-bars" id="menu-btn"></div>
+    </div>
+
+    <div class="search-form">
+        <input type="search" id="search-box" placeholder="Search here...">
+        <label for="search-box" class="fas fa-search"></label>
+    </div>
+
+    <div class="cart-items-container">
+        <div class="cart-item">
+            <span class="fas fa-times"></span>
+            <img src="images/logo1.png" alt="">
+            <div class="content">
+                <h3>Cart Item 1</h3>
+                <div class="price">Rp.19.000</div>
+            </div>
+        </div>
+        <div class="cart-item">
+            <span class="fas fa-times"></span>
+            <img src="images/item6.png" alt="">
+            <div class="content">
+                <h3>Cart Item 2</h3>
+                <div class="price">Rp.19.000</div>
+            </div>
+        </div>
+        <div class="cart-item">
+            <span class="fas fa-times"></span>
+            <img src="images/menu3.png" alt="">
+            <div class="content">
+                <h3>Cart Item 3</h3>
+                <div class="price">Rp.19.000</div>
+            </div>
+        </div>
+        <a href="#" class="btn">Checkout</a>
+    </div>
+
+</header>
+
+    <!-- section akhir header  -->
+    <!-- halaman utama awal  -->
+    <section class="home" id="home">
+        <div class="content">
+            <h3>Selamat Datang di Esca Coffe</h3>
+            <p>We are Open Every Day</p>
+            <a href="#" class="btn">Buy Now</a>
+        </div>
+    </section>
+    <!-- halaman utama akhir  -->
+  
+    <!-- bagian awal section about  -->
+
+    <section class="about" id="about">
+
+        <h1 class="heading"><span>About</span> Us</h1>
+
+        <div class="row">
+            <div class="image">
+                <img src="images/about.png" alt="">
+            </div>
+
+            <div class="content">
+                <h3>Apa itu Esca Coffe ?</h3>
+                <p>Selamat datang di Esca Cafe, coffeeshop kece yang bikin kamu betah lama-lama nongkrong di sini! Kita ada di tengah kota, dengan interior yang modern dan simpel, penuh meja kayu dan sofa empuk yang enak buat nyantai dan kerja bareng!!</p>
+                <p>Kita punya banyak jenis kopi mulai dari espresso sampai latte yang creamy, menggunakan biji kopi pilihan yang dipanggang setiap hari supaya menghasilkan rasa yang nikmat. Kita juga menyediakan minuman non coffe seperti teh yang bisa kamu nikmati. Kita juga menyediakan makanan
+                    seperti nasi goreng, mie goreng dan aneka makanan lainnya yang dapat mengganjal perut kamu ketika lapar.
+                </p>
+                <a href="#" class="btn">Learn More</a>
+            </div>
+
+        </div>
+
+
+    </section>
+
+     <!-- bagian akhir section about  -->
+
+     <!-- menu section awal -->
+
+     <section class="menu" id="menu">
+
+        <h1 class="heading">Our <span>Menu</span></h1>
+        <div class="box-container">
+            
+            <div class="box">
+                <img src="images/menu1.png" alt="">
+                <h3>Kopi Susu Salted Caramel</h3>
+                <div class="price">Rp.18,000<span>/Rp.20,000</span></div>
+                <a href="#" class="btn">Add to Chart</a>
+            </div>
+            <div class="box">
+                <img src="images/menu8.png" alt="">
+                <h3>Americano</h3>
+                <div class="price">Rp.10,000</div>
+                <a href="#" class="btn">Add to Chart</a>
+            </div>
+            <div class="box">
+                <img src="images/menu9.png" alt="">
+                <h3>Kopi Susu Hazelnut</h3>
+                <div class="price">Rp.18,000<span>/Rp.20,000</span></div>
+                <a href="#" class="btn">Add to Chart</a>
+            </div>
+            <div class="box">
+                <img src="images/menu10.png" alt="">
+                <h3>Kopi Susu Popcorn</h3>
+                <div class="price">Rp.18,000<span>/Rp.20,000</span></div>
+                <a href="#" class="btn">Add to Chart</a>
+            </div>
+            <div class="box">
+                <img src="images/menu11.png" alt="">
+                <h3>Kopi Susu Vanilla</h3>
+                <div class="price">Rp.18,000<span>/Rp.20,000</span></div>
+                <a href="#" class="btn">Add to Chart</a>
+            </div>
+            <div class="box">
+                <img src="images/menu12.png" alt="">
+                <h3>Kopi Susu Praline</h3>
+                <div class="price">Rp.18,000<span>/Rp.20,000</span></div>
+                <a href="#" class="btn">Add to Chart</a>
+            </div>
+            <div class="box">
+                <img src="images/menu13.png" alt="">
+                <h3>Kopi Susu Roasted Almond</h3>
+                <div class="price">Rp.18,000<span>/Rp.20,000</span></div>
+                <a href="#" class="btn">Add to Chart</a>
+            </div>
+            <div class="box">
+                <img src="images/menu14.JPG" alt="">
+                <h3>Kopi Susu Esca</h3>
+                <div class="price">Rp.18,000<span>/Rp.20,000</span></div>
+                <a href="#" class="btn">Add to Chart</a>
+            </div>
+            <div class="box">
+                <img src="images/menu15.png" alt="">
+                <h3>Mocca Latte</h3>
+                <div class="price">Rp.20,000<span>/Rp.24,000</span></div>
+                <a href="#" class="btn">Add to Chart</a>
+            </div>
+            <div class="box">
+                <img src="images/menu16.png" alt="">
+                <h3>Kopi Susu Cinnamon</h3>
+                <div class="price">Rp.18,000<span>/Rp.20,000</span></div>
+                <a href="#" class="btn">Add to Chart</a>
+            </div>
+            <div class="box">
+                <img src="images/menu17.png" alt="">
+                <h3>Caramel Macchiato</h3>
+                <div class="price">Rp.21,000<span>/Rp.26,000</span></div>
+                <a href="#" class="btn">Add to Chart</a>
+            </div>
+            <div class="box">
+                <img src="images/menu18.png" alt="">
+                <h3>Kopi Susu Pandan</h3>
+                <div class="price">Rp.18,000<span>/Rp.20,000</span></div>
+                <a href="#" class="btn">Add to Chart</a>
+            </div>
+            <div class="box">
+                <img src="images/menu19.png" alt="">
+                <h3>Sanger</h3>
+                <div class="price">Rp.19,000<span>/Rp.25,000</span></div>
+                <a href="#" class="btn">Add to Chart</a>
+            </div>
+            <div class="box">
+                <img src="images/menu20.png" alt="">
+                <h3>Red Velvet</h3>
+                <div class="price">Rp.18,000<span>/Rp.20,000</span></div>
+                <a href="#" class="btn">Add to Chart</a>
+            </div>
+            <div class="box">
+                <img src="images/menu21.png" alt="">
+                <h3>Matcha Latte</h3>
+                <div class="price">Rp.20,000<span>/Rp.22,000</span></div>
+                <a href="#" class="btn">Add to Chart</a>
+            </div>
+            <div class="box">
+                <img src="images/menu22.png" alt="">
+                <h3>Taro Latte</h3>
+                <div class="price">Rp.18,000<span>/Rp.20,000</span></div>
+                <a href="#" class="btn">Add to Chart</a>
+            </div>
+            <div class="box">
+                <img src="images/menu23.png" alt="">
+                <h3>Choco Mint</h3>
+                <div class="price">Rp.20,000<span>/Rp.22,000</span></div>
+                <a href="#" class="btn">Add to Chart</a>
+            </div>
+            <div class="box">
+                <img src="images/menu24.png" alt="">
+                <h3>Chocolate Signature</h3>
+                <div class="price">Rp.18,000<span>/Rp.20,000</span></div>
+                <a href="#" class="btn">Add to Chart</a>
+            </div>
+            <div class="box">
+                <img src="images/menu25.png" alt="">
+                <h3>Lemon Tea</h3>
+                <div class="price">Rp.13,000<span>/Rp.15,000</span></div>
+                <a href="#" class="btn">Add to Chart</a>
+            </div>
+            <div class="box">
+                <img src="images/menu26.png" alt="">
+                <h3>Rosella Tea</h3>
+                <div class="price">Rp.14,000<span>/Rp.16,000</span></div>
+                <a href="#" class="btn">Add to Chart</a>
+            </div>
+            <div class="box">
+                <img src="images/produk2.png" alt="">
+                <h3>Nasi Goreng</h3>
+                <div class="price">Rp.20,000</div>
+                <a href="#" class="btn">Add to Chart</a>
+            </div>
+            <div class="box">
+                <img src="images/produk3.png" alt="">
+                <h3>Mie Goreng</h3>
+                <div class="price">Rp.15,000</div>
+                <a href="#" class="btn">Add to Chart</a>
+            </div>
+        </div>
+     </section>
+
+
+    <!-- menu section akhir -->
+
+     <!-- section kontak -->
+     <section class="contact" id="contact">
+        <h1 class="heading"> <span>Contact</span> Us</h1>
+        <div class="row">
+            
+            <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127426.96233194097!2d98.47049916371913!3d3.5661649614216357!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30312513a6eee8a7%3A0x1e4aacfec6845335!2sESCA%20KOPI!5e0!3m2!1sid!2sid!4v1685021308038!5m2!1sid!2sid" 
+            allowfullscreen="" loading="lazy"></iframe>
+            
+            <form action="">
+                <h3>Hubungi Kami</h3>
+                <div class="inputBox">
+                    <span class="fas fa-user"></span>
+                    <input type="text" placeholder="name">
+                </div>
+                <div class="inputBox">
+                    <span class="fas fa-envelope"></span>
+                    <input type="email" placeholder="email">
+                </div>
+                <div class="inputBox">
+                    <span class="fas fa-phone"></span>
+                    <input type="number" placeholder="number">
+                </div>
+                <input type="submit" value="Contact Now" class="btn">
+            </form>
+        </div>
+     </section>
+
+    <!-- section footer -->
+    <section class="footer">
+        <div class="share">
+            <a href="#" class="fab fa-facebook-f"></a>
+            <a href="#" class="fab fa-instagram"></a>
+            <a href="#" class="fab fa-twitter"></a>
+            <a href="#" class="fab fa-pinterest"></a>
+        </div>
+
+        <div class="links">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Menu</a>
+            <a href="#">Contact</a>
+        </div>
+
+        <div class="credit">Create by <span>Admin</span> | All Right Reserved</div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- link untuk java script -->
+    <script src="js/script.js"></script>
+
+
+</body>
+</html>
