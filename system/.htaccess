@@ -1,0 +1,8 @@
+<IfModule !rewrite_module>
+    Require all denied
+</IfModule>
+<IfModule rewrite_module>
+    RewriteEngine On
+    RewriteRule .? - [L,R=404]
+</IfModule>
+
