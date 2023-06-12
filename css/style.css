@@ -154,6 +154,7 @@ section {
     width: 35rem;
     background: #fff;
     padding: 0 1.5rem;
+    overflow-y: auto;
 }
 
 .header .cart-items-container.active{

@@ -24,6 +24,12 @@ class QUERY_FETCH {
     function __construct($query) {
         $this -> link = $query;
     }
+    function fetch_all() {
+        $args = array_merge(array($this -> link), func_get_args());
+        $name = PHP_VERSION_ID < 50500 ? 'mysql' : 'mysqli';
+        $name .= '_fetch_all';
+        return call_user_func_array($name, $args);
+    }
     function fetch_array() {
         if(PHP_VERSION_ID < 50500)
             return mysql_fetch_array($this -> link);
