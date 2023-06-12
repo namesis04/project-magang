@@ -1,17 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/style.css">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Esca Coffe</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Administrator</title>
+  <!-- Include Tailwind CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style2.css">
 </head>
+
 <body>
-<ul>
-    <li><a href="pesanan.php">Admin Pesanan</a></li>
-    <li><a href="kasir.php">Admin Kasir</a></li>
-</ul>
+    <div class="flex h-screen">
+    <!-- Sidebar -->
+    <div class="w-1/4 sidebar flex flex-col items-center">
+      <div class="py-4 px-8">
+        <div class="flex items-center mb-4">
+        <img src="logo.png" alt="" class="h-12 w-12 mr-4 mb-4">
+        <h1 class="text-2xl font-bold mb-4">Admin Esca Coffe</h1>
+        </div>
+        <ul class="space-y-2">
+          <li>
+            <a href="pesanan.php" class="block py-2 px-4 rounded-lg button-pesanan hover:bg-yellow-600">Admin Pesanan</a>
+          </li>
+          <li>
+            <a href="kasir.php" class="block py-2 px-4 rounded-lg button-kasir hover:bg-yellow-600">Admin Kasir</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="flex-1 p-8 bg-sidebar">
+      <h2 class="text-2xl font-bold mb-4">Selamat Datang di Dashboard Admin Esca Coffe!</h2>
+      <p>Anda dapat memilih salah satu menu di samping untuk proses pembayaran.</p>
+      </div>
+    </div>
+  </div>
 
 </body>
+
 </html>
