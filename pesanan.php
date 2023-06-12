@@ -1,8 +1,9 @@
 <?php
 require_once 'system/koneksi.php';
 session_start();
-if (!is_array($_SESSION['pesanan']))
-    $_SESSION['pesanan'] = array();
+if (is_array($_SESSION['pesanan']))
+    $_SESSION['pesanan'] = array_unique($_SESSION['pesanan']);
+else $_SESSION['pesanan'] = array();
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $koneksi->query_insert('pesanan', ['booked_at' => date('Y-m-d H:i:s')]);
     $p = $koneksi->insert_id();
@@ -13,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }, [$val, $p])));
     }, json_decode(file_get_contents('php://input'))))));
     $_SESSION['pesanan'][] = $p;
-    header('Location: ' . $_SERVER['REQUEST_URI']);
+    http_response_code(204);
     exit;
 }
 $pesanan = array_map(function($p) use ($koneksi) {
@@ -27,11 +28,12 @@ $pesanan = array_map(function($p) use ($koneksi) {
         return $p;
     }
 }, $_SESSION['pesanan']);
-$_SESSION['pesanan'] = array_map(function($p) {
-    return $p['urut'];
-}, array_filter($pesanan, function($p) {
+$pesanan = array_values(array_filter($pesanan, function($p) {
     return !is_null($p);
 }));
+$_SESSION['pesanan'] = array_map(function($p) {
+    return $p['urut'];
+}, $pesanan);
 ?>
 <!DOCTYPE html>
 <html>

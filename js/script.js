@@ -97,5 +97,6 @@ async function checkout() {
         data: localStorage.getItem('cart'),
     });
     localStorage.setItem('cart', '[]');
+    location = 'pesanan.php';
     renderCart();
 }
