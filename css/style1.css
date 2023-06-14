@@ -1,0 +1,32 @@
+body {
+    background-color: #2e2212; /* Warna coklat kehitaman */
+  }
+
+  .form-background {
+    background-color: rgba(140, 98, 25, 0.8); /* Warna latar belakang form yang disesuaikan */
+  }
+
+  .form-background input[type="submit"],
+  .form-background input[type="button"],
+  .form-background button {
+    background-color: #e8ba6b; /* Warna latar belakang tombol */
+    color: #382e21; /* Warna teks pada tombol */
+  }
+
+  .form-background input[type="submit"]:hover,
+  .form-background input[type="button"]:hover,
+  .form-background button:hover {
+    background-color: #ffd68f; /* Warna latar belakang tombol saat dihover */
+  }
+
+  .golden-text {
+    color: #ffd700; /* Warna teks keemasan */
+  }
+
+  .golden-text1 {
+    color: #cab53f; /* Warna teks keemasan */
+  }
+
+  .form-background .forgot-password {
+    color: #dabea0;
+  }
