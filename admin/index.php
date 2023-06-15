@@ -1,3 +1,7 @@
+<?php
+require_once 'koneksi.php';
+$auditLog = $db->query('SELECT * FROM audits INNER JOIN users ON users.id = audits.user_id LIMIT 15');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,6 +31,9 @@
           <li>
             <a href="kasir.php" class="block py-2 px-4 rounded-lg button-kasir hover:bg-yellow-600">Admin Kasir</a>
           </li>
+          <li>
+            <a href="../admin.php" class="block py-2 px-4 rounded-lg button-kasir hover:bg-yellow-600">Tambah Admin</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -34,14 +41,34 @@
     <!-- Main Content -->
     <div class="flex-1 p-8 bg-sidebar">
       <h2 class="text-2xl font-bold mb-4">Selamat Datang di Dashboard Admin Esca Coffe!</h2>
-      <p>Anda dapat memilih salah satu menu di samping untuk proses pembayaran.</p>
-      </div>
+<?php if ($auditLog->num_rows()): ?>
+      <table style="border-collapse: separate" cellSpacing="5">
+          <thead>
+              <tr>
+                  <td>Waktu</td>
+                  <td>Pelaku</td>
+                  <td>Aksi</td>
+              </tr>
+          </thead>
+          <tbody>
+<?php while (is_array($log = $auditLog->fetch_array())): ?>
+              <tr>
+                  <td className="pr-4"><?php echo $log['waktu'] ?></td>
+                  <td><?php echo htmlentities($log['fn']) ?></td>
+                  <td><?php echo htmlentities($log['action']) ?></td>
+              </tr>
+<?php endwhile ?>
+          </tbody>
+      </table>
+<?php else: ?>
+      <p>Anda dapat memilih salah satu menu di samping.</p>
+<?php endif ?>
     </div>
   </div>
 
   <!-- Footer -->
   <footer class="footer">
-    <p>Copyright & Copy by Admin. All Right Reserved</p>
+    <p>Copyright &copy; by Admin. All Right Reserved</p>
   </footer>
 <style>
   .footer {

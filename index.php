@@ -17,7 +17,7 @@ require_once 'system/koneksi.php';
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
-    <script type="text/json" id="prices"><?php echo json_encode($koneksi->query('SELECT prices.id, nama, harga, label, menu_id FROM prices INNER JOIN menus ON menus.id = prices.menu_id')->fetch_all(MYSQLI_ASSOC)) ?></script>
+    <script type="text/json" id="prices"><?php echo json_encode($db->query('SELECT prices.id, nama, harga, label, menu_id FROM prices INNER JOIN menus ON menus.id = prices.menu_id')->fetch_all(MYSQLI_ASSOC)) ?></script>
 </head>
 <body>
     <!-- section awal header  -->

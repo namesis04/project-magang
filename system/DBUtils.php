@@ -463,7 +463,7 @@ class SQL {
     }
     static function value_func_quote($upper_clause, $mysql = null, $func_name) {
         if (func_num_args() > 3)
-            $args = implode(',', array_map(function($val) use ($upper_clause) {
+            $args = implode(',', array_map(function($val) use ($upper_clause, $mysql) {
                 return self::escape_valstr($val, $upper_clause, $mysql);
             }, array_slice(func_get_args(), 3)));
         else $args = "";
