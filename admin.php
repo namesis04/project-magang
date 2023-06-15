@@ -79,12 +79,12 @@ if (@$_POST['username'] && @$_POST['password']) {
             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline" name="fn" id="fullname" type="text" placeholder="Full Name" required>
           </div>
           <div class="mb-4">
-            <label class="block text-gray-900 text-sm font-bold mb-2" for="username_reg">Username</label>
-            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline" name="username" id="username_reg" type="text" placeholder="Username" required>
+            <label class="block text-gray-900 text-sm font-bold mb-2" for="email">Email</label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline" id="email" type="text" placeholder="Email">
           </div>
           <div class="mb-4">
-            <label class="block text-gray-900 text-sm font-bold mb-2" for="email">Username</label>
-            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline" id="email" type="text" placeholder="Email">
+            <label class="block text-gray-900 text-sm font-bold mb-2" for="username_reg">Username</label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline" name="username" id="username_reg" type="text" placeholder="Username" required>
           </div>
           <div class="mb-4">
             <label class="block text-gray-900 text-sm font-bold mb-2" for="password_reg">Password</label>
