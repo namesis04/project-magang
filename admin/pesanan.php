@@ -1,5 +1,5 @@
 <?php
-require_once '../system/koneksi.php';
+require_once 'koneksi.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $urut = file_get_contents('php://input');
     $db->query_update('pesanan', ['delivered_at' => date('Y-m-d H:i:s')],
