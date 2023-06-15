@@ -39,17 +39,8 @@ if ($p) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daftar Pesanan</title>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <style type="text/css">
-    table { max-width: 100% }
-    @media print {
-        .no-print { display: none; }
-    }
-    </style>
     <script type="text/javascript">
-<?php if ($p && $p['paid_at']): ?>
-        $(function() { window.print() });
-<?php endif ?>
-        async function kasir(urut) {
+        async function bayar(urut) {
             await $.ajax({
                 method: 'post',
                 url: '',
@@ -63,50 +54,19 @@ if ($p) {
     </script>
 </head>
 <body>
-<form class="no-print">
-    <label for="numURUT">No. Pesanan: <input type="number" id="numURUT" name="urut"></label>
-    <input type="submit" value="cek" />
-</form>
 <?php
-if ($p) {
-    $p['details'] = $db->query("SELECT menus.id,nama,harga,label FROM details INNER JOIN prices ON prices.id=details.price_id INNER JOIN menus ON menus.id = prices.menu_id WHERE urut=$p[urut]")->fetch_all(MYSQLI_ASSOC);
+while (is_array($p = $q->fetch_assoc())):
+    $p['details'] = $koneksi->query("SELECT menus.id,nama,harga,label FROM details INNER JOIN prices ON prices.id=details.price_id INNER JOIN menus ON menus.id = prices.menu_id WHERE urut=$p[urut]")->fetch_all(MYSQLI_ASSOC);
     $p['total'] = array_reduce($p['details'], function($c, $d) {
         return $c + $d['harga'];
     });
-    if ($p['paid_at']) {
-?>
-<table>
-    <tr><td colspan="3" align="center">
-        <div>Esca Coffe</div>
-        <div>Medan</div>
-    </td></tr>
-    <tr><td colspan="3">Pelanggan #<?php echo $p['urut'] ?></td></tr>
-<?php foreach ($p['details'] as $d): ?>
-    <tr>
-        <td><?php echo htmlentities($d['nama'] . ($d['label'] ? " ($d[label])" : '')) ?></td>
-        <td>:</td>
-        <td>Rp<?php echo $d['harga'] ?></td>
-    </tr>
-<?php endforeach ?>
-    <tr>
-        <td>Total</td>
-        <td>:</td>
-        <td>Rp<?php echo $p['total'] ?></td>
-    </tr>
-    <tr><td colspan="3">Dibayar pada <?php echo $p['paid_at'] ?></td></tr>
-</table>
-<a href="javascript:kasir('<?php echo $p['urut'] ?>')" class="no-print">batalkan</a>
-<?php
-    } else {
 ?>
 <p>
     <pre><?php echo htmlentities(json_encode($p, JSON_PRETTY_PRINT)) ?></pre>
-    <a href="javascript:kasir('<?php echo $p['urut'] ?>')">buat struk</a>
+    <a href="javascript:bayar('<?php echo $p['urut'] ?>')">pelanggan<?php echo htmlentities('#' . $p['urut']) ?> sudah bayar</a>
 </p>
-<?php
-    }
-}
-?>
+<?php endwhile ?>
 
 </body>
 </html>
+
