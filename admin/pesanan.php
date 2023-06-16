@@ -20,6 +20,60 @@ $q = $db->query_select('pesanan', '*', SQL_WHERE_CLAUSE::create([
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daftar Pesanan</title>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .pesanan {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        .pesanan ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .pesanan li {
+            margin-bottom: 5px;
+        }
+
+        .pesanan a {
+            display: inline-block;
+            background-color: #804000;
+            color: #fff;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            transition: background-color 0.3s ease;
+        }
+
+        .pesanan a:hover {
+            background-color: #ff8c1a;
+        }
+
+        .pesanan p {
+            margin-top: 10px;
+        }
+        .btn-kembali {
+            display: inline-block;
+            background-color: #ff8c1a;
+            color: #fff;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-kembali:hover {
+            background-color: #73481f;
+        }
+    </style>
     <script type="text/javascript">
         async function antar(urut) {
             await $.ajax({
@@ -42,11 +96,17 @@ while (is_array($p = $q->fetch_assoc())):
         return $c + $d['harga'];
     });
 ?>
-<p>
-    <pre><?php echo htmlentities(json_encode($p, JSON_PRETTY_PRINT)) ?></pre>
+<div class="pesanan">
+    <ul>
+        <?php foreach ($p['details'] as $detail): ?>
+            <li><?php echo $detail['nama']; ?> - Rp <?php echo number_format($detail['harga']); ?></li>
+        <?php endforeach; ?>
+    </ul>
+    <p>Total: Rp <?php echo number_format($p['total']); ?></p>
     <a href="javascript:antar('<?php echo $p['urut'] ?>')">antar ke pelanggan <?php echo htmlentities('#' . $p['urut']) ?></a>
-</p>
+</div>
 <?php endwhile ?>
+<a href="index.php" class="btn-kembali">Kembali</a>
 
 </body>
 </html>

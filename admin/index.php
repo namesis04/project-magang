@@ -34,6 +34,11 @@ $auditLog = $db->query('SELECT * FROM audits INNER JOIN users ON users.id = audi
           <li>
             <a href="../admin.php" class="block py-2 px-4 rounded-lg button-kasir hover:bg-yellow-600">Tambah Admin</a>
           </li>
+          <li>
+            <form action="../admin.php" method="post">
+              <button type="submit" class="block py-2 px-4 rounded-lg button-logout hover:bg-red-600">Logout</button>
+            </form>
+          </li>
         </ul>
       </div>
     </div>

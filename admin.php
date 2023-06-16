@@ -22,7 +22,7 @@ if (@$_POST['username'] && @$_POST['password']) {
         ]))->fetch_all()[0][0];
         if (!$_SESSION['user_id']) {
             unset($_SESSION['user_id']);
-            die('<script>alert("coba lagi"); history.back()</script>');
+            die('<script>alert("Username atau password anda salah, silahkan coba lagi"); history.back()</script>');
         }
     }
     if (!$user_id) {
