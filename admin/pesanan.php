@@ -6,6 +6,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     SQL_WHERE_CLAUSE::create([
         ['urut', '=', $urut]
     ]));
+    http_response_code(204);
+    auditLog("mengantarkan pesanan #$urut");
     exit;
 }
 $q = $db->query_select('pesanan', '*', SQL_WHERE_CLAUSE::create([

@@ -11,16 +11,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         die('pesanan tidak terdaftar');
     }
     $p = $p[0];
-    if ($p['paid_at'])
+    if ($p['paid_at']) {
         $db->query_update('pesanan', ['paid_at' => null],
         SQL_WHERE_CLAUSE::create([
             ['urut', '=', $urut]
         ]));
-    else
+        auditLog("membatalkan pembayaran pada #$urut");
+    } else {
         $db->query_update('pesanan', ['paid_at' => date('Y-m-d H:i:s')],
         SQL_WHERE_CLAUSE::create([
             ['urut', '=', $urut]
         ]));
+        auditLog("melakukan pembayaran pada #$urut");
+    }
+    http_response_code(204);
     exit;
 }
 $p = !empty($_GET['urut']) ? $_GET['urut'] : null;
@@ -197,7 +201,7 @@ if ($p) {
                     </tr>
                 </table>
             </div>
-            <div class="order-actions">
+            <div class="order-actions no-print">
                 <a href="javascript:kasir('<?php echo $p['urut'] ?>')" class="no-print">Batalkan</a>
                 <a href="javascript:window.print()" class="no-print">Cetak</a>
             </div>

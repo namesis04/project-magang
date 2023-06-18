@@ -12,5 +12,7 @@ if (!$user_id) {
 }
 function auditLog($act)
 {
+    global $db;
+    global $user_id;
     $db->query_insert('audits', ['user_id' => $user_id, 'action' => $act,]);
 }

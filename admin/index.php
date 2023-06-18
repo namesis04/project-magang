@@ -13,6 +13,7 @@ $auditLog = $db->query('SELECT * FROM audits INNER JOIN users ON users.id = audi
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
   <!-- Custom CSS -->
   <link rel="stylesheet" href="style2.css">
+  <script type="text/javascript" src="../js/logout.js"></script>
 </head>
 
 <body>
@@ -35,9 +36,7 @@ $auditLog = $db->query('SELECT * FROM audits INNER JOIN users ON users.id = audi
             <a href="../admin.php" class="block py-2 px-4 rounded-lg button-kasir hover:bg-yellow-600">Tambah Admin</a>
           </li>
           <li>
-            <form action="../admin.php" method="post">
-              <button type="submit" class="block py-2 px-4 rounded-lg button-logout hover:bg-red-600">Logout</button>
-            </form>
+            <a href="javascript:logout()" class="block py-2 px-4 rounded-lg button-kasir hover:bg-yellow-600">logout</a>
           </li>
         </ul>
       </div>
