@@ -42,7 +42,6 @@ if ($p) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daftar Pesanan</title>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <style type="text/css">
         table {
             max-width: 100%;
@@ -62,18 +61,17 @@ if ($p) {
             background-color: #f9f9f9;
             border: 1px solid #ddd;
             border-radius: 5px;
+            font-family: Arial, sans-serif;
         }
 
         .order-details {
             margin-bottom: 20px;
-            font-family : verdana;
-            font-size : 0.9rem;
         }
+
         .order-details h3 {
             margin-top: 0;
-            text-align : center;
-            font-family : verdana;
-            font-size : 1.5rem;
+            text-align: center;
+            font-size: 1.5rem;
         }
 
         .order-details table {
@@ -90,6 +88,7 @@ if ($p) {
 
         .order-details table th {
             background-color: #f2f2f2;
+            font-weight: bold;
         }
 
         .order-details table td:last-child {
@@ -98,6 +97,7 @@ if ($p) {
 
         .order-actions {
             text-align: center;
+            margin-top: 20px;
         }
 
         .order-actions a {
@@ -110,9 +110,27 @@ if ($p) {
             border-radius: 5px;
         }
 
+        .order-actions a:hover {
+            background-color: #773c00;
+        }
+
+        .btn-kembali {
+            display: inline-block;
+            background-color: #ff9933;
+            color: #fff;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-kembali:hover {
+            background-color: #ff8000;
+        }
+
         .search-container {
-            margin-bottom: 20px;
             text-align: center;
+            margin-bottom: 20px;
         }
 
         .search-container input[type="number"] {
@@ -131,20 +149,8 @@ if ($p) {
             border-radius: 5px;
             cursor: pointer;
         }
-        .btn-kembali {
-            display: inline-block;
-            background-color: #ff9933;
-            color: #fff;
-            text-decoration: none;
-            padding: 5px 10px;
-            border-radius: 3px;
-            transition: background-color 0.3s ease;
-        }
-
-        .btn-kembali:hover {
-            background-color: #ff9933;
-        }
     </style>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script type="text/javascript">
         <?php if ($p && $p['paid_at']): ?>
         $(function () {
@@ -165,66 +171,80 @@ if ($p) {
     </script>
 </head>
 <body>
-<form class="no-print">
     <div class="search-container">
-    <label for="numURUT">No. Pesanan: <input type="number" id="numURUT" name="urut"></label>
-    <input type="submit" value="Cek"/>
+        <form class="no-print">
+            <label for="numURUT">No. Pesanan:</label>
+            <input type="number" id="numURUT" name="urut">
+            <input type="submit" value="Check">
+        </form>
     </div>
-</form>
-<?php
-if ($p) {
-    $p['details'] = $db->query("SELECT menus.id,nama,harga,label FROM details INNER JOIN prices ON prices.id=details.price_id INNER JOIN menus ON menus.id = prices.menu_id WHERE urut=$p[urut]")->fetch_all(MYSQLI_ASSOC);
-    $p['total'] = array_reduce($p['details'], function ($c, $d) {
-        return $c + $d['harga'];
-    });
-    if ($p['paid_at']) {
-        ?>
-        <div class="order-container">
-            <div class="order-details">
-                <h3>Esca Coffe</h3>
-                <div>Medan</div>
-                <h4>Pelanggan #<?php echo $p['urut'] ?></h4>
-                <table>
-                    <?php foreach ($p['details'] as $d): ?>
+
+    <?php
+    if ($p) {
+        $p['details'] = $db->query("SELECT menus.id,nama,harga,label FROM details INNER JOIN prices ON prices.id=details.price_id INNER JOIN menus ON menus.id = prices.menu_id WHERE urut=$p[urut]")->fetch_all(MYSQLI_ASSOC);
+        $p['total'] = array_reduce($p['details'], function ($c, $d) {
+            return $c + $d['harga'];
+        });
+        if ($p['paid_at']) {
+            ?>
+            <div class="order-container">
+                <div class="order-details">
+                    <h3>Esca Coffee</h3>
+                    <div>Medan</div>
+                    <h4>Pelanggan #<?php echo $p['urut'] ?></h4>
+                    <table>
+                        <?php foreach ($p['details'] as $d): ?>
+                            <tr>
+                                <td><?php echo htmlentities($d['nama'] . ($d['label'] ? " ($d[label])" : '')) ?></td>
+                                <td>Rp<?php echo $d['harga'] ?></td>
+                            </tr>
+                        <?php endforeach ?>
                         <tr>
-                            <td><?php echo htmlentities($d['nama'] . ($d['label'] ? " ($d[label])" : '')) ?></td>
-                            <td>Rp<?php echo $d['harga'] ?></td>
+                            <th>Total</th>
+                            <td>Rp<?php echo $p['total'] ?></td>
                         </tr>
-                    <?php endforeach ?>
-                    <tr>
-                        <th>Total</th>
-                        <td>Rp<?php echo $p['total'] ?></td>
-                    </tr>
-                    <tr>
-                        <th>Dibayar pada</th>
-                        <td><?php echo $p['paid_at'] ?></td>
-                    </tr>
-                </table>
+                        <tr>
+                            <th>Dibayar pada</th>
+                            <td><?php echo $p['paid_at'] ?></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="order-actions no-print">
+                    <a href="javascript:kasir('<?php echo $p['urut'] ?>')">Batalkan</a>
+                    <a href="javascript:window.print()">Cetak</a>
+                </div>
             </div>
-            <div class="order-actions no-print">
-                <a href="javascript:kasir('<?php echo $p['urut'] ?>')" class="no-print">Batalkan</a>
-                <a href="javascript:window.print()" class="no-print">Cetak</a>
+            <?php
+        } else {
+            ?>
+            <div class="order-container">
+                <div class="order-details">
+                    <h3>Pesanan</h3>
+                    <table>
+                        <tr>
+                            <th>Nama Menu</th>
+                            <th>Harga</th>
+                        </tr>
+                        <?php foreach ($p['details'] as $d): ?>
+                            <tr>
+                                <td><?php echo $d['nama'] . ($d['label'] ? " ($d[label])" : '') ?></td>
+                                <td>Rp<?php echo $d['harga'] ?></td>
+                            </tr>
+                        <?php endforeach ?>
+                        <tr>
+                            <th>Total</th>
+                            <td>Rp<?php echo $p['total'] ?></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="order-actions">
+                    <a href="javascript:kasir('<?php echo $p['urut'] ?>')">Buat Struk</a>
+                    <a href="index.php" class="btn-kembali">Kembali</a>
+                </div>
             </div>
-        </div>
-        <?php
-    } else {
-        ?>
-        <div class="order-container">
-            <div class="order-details">
-                <h3>Pesanan</h3>
-                <pre><?php echo htmlentities(json_encode($p, JSON_PRETTY_PRINT)) ?></pre>
-            </div>
-            <div class="order-actions">
-                <a href="javascript:kasir('<?php echo $p['urut'] ?>')">Buat Struk</a>
-                <a href="index.php" class="btn-kembali">Kembali</a>
-            </div>
-            <a href="index.php" class="btn-kembali">Kembali</a>
-        </div>
-        <?php
+            <?php
+        }
     }
-}
-?>
-
-
+    ?>
 </body>
 </html>

@@ -36,7 +36,7 @@ $auditLog = $db->query('SELECT * FROM audits INNER JOIN users ON users.id = audi
             <a href="../admin.php" class="block py-2 px-4 rounded-lg button-kasir hover:bg-yellow-600">Tambah Admin</a>
           </li>
           <li>
-            <a href="javascript:logout()" class="block py-2 px-4 rounded-lg button-kasir hover:bg-yellow-600">logout</a>
+            <a href="javascript:logout()" class="block py-2 px-4 rounded-lg button-kasir hover:bg-yellow-600">Logout</a>
           </li>
         </ul>
       </div>
